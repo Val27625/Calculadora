@@ -7,16 +7,16 @@ Como Executar o Script
 Para executar esta calculadora, você precisará ter o **Python 3** instalado em seu sistema.
 
 1.  **Clone o repositório:**
-    ```bash
-    git clone [https://github.com/SEU_USUARIO/calculadora-python.git](https://github.com/SEU_USUARIO/calculadora-python.git)
-    cd calculadora-python
-    ```
-    (Substitua `SEU_USUARIO` pelo seu nome de usuário do GitHub)
+ ```bash
+git clone https://github.com/Val27625/Calculadora.git
+cd Calculadora
+```
+    
 
 2.  **Execute o script Python diretamente:**
-    ```bash
-    python calculadora.py
-    ```
+   ```bash
+   python calculadora.py
+   ```
 
 3.  **Executar via script Shell (Opcional):**
     Para maior conveniência, um script shell (`.sh`) foi fornecido.
