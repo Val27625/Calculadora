@@ -1,52 +1,80 @@
 # **Calculadora**
 Este repositório apresenta uma calculadora Python simples que executa operações básicas (adição, subtração, multiplicação e divisão), acompanhada de um shell script (calculadora.sh) para facilitar sua execução.
+---
 
-# **Executar**
+## Como Executar o Script
 
-1- Clonar o Repositório - Clone este repositório para o seu computador:
+Para executar esta calculadora, você precisará ter o **Python 3** instalado em seu sistema.
 
-2- Depois de clonar, navegue até o diretório, aonde o repositório foi salvo:
+1.  **Clone o repositório:**
+    ```bash
+    git clone [https://github.com/SEU_USUARIO/calculadora-python.git](https://github.com/SEU_USUARIO/calculadora-python.git)
+    cd calculadora-python
+    ```
+    (Substitua `SEU_USUARIO` pelo seu nome de usuário do GitHub)
 
-```bash
-cd caminho/para/seu/repositório
-```
+2.  **Execute o script Python diretamente:**
+    ```bash
+    python calculadora.py
+    ```
 
-3- Crie e edite o arquivo calculadora.sh - Crie o arquivo shell script com o seguinte comando:
+3.  **Executar via script Shell (Opcional):**
+    Para maior conveniência, um script shell (`.sh`) foi fornecido.
+    * **Dê permissão de execução ao script:**
+        ```bash
+        chmod +x executar_calculadora.sh
+        ```
+    * **Execute o script:**
+        ```bash
+        ./executar_calculadora.sh
+        ```
+    Este script irá iniciar a calculadora e pausar o terminal após a execução.
 
-```bash
- nano calculadora.sh
-```
+---
 
-Abrirá o editor de texto nano. Dentro do arquivo, cole o código:
+## Explicação do Código Python (`calculadora.py`)
 
-```bash
-#!/bin/bash
-#Script para executar a calculadora Python
-Python3 calculadora.py
-```
+O script `calculadora.py` é uma calculadora de linha de comando que realiza operações básicas (soma, subtração, multiplicação, divisão).
 
- 4 - Para tornar o Script Executável, você precisará alterar as permissões. Execute o seguinte comando:
+### Estrutura do Código:
 
-```bash
-chmod +x calculadora.sh
-```
-Isso garante que você possa executar o arquivo como um script.
+* **Cores ANSI (`c`):** Uma tupla de strings que contém códigos de escape ANSI para colorir o texto no terminal, melhorando a experiência do usuário.
+    * `c[0]`: Sem cor (reset).
+    * `c[1]`: Vermelho (para mensagens de erro).
+    * `c[2]`: Verde.
+    * `c[3]`: Amarelo (para resultados).
+    * `c[4]`: Azul.
+    * `c[5]`: Roxo (para prompts de entrada).
 
+* **`isFloat(msg)` função:**
+    * **Propósito:** Garante que a entrada do usuário seja um número decimal (float) válido.
+    * **Funcionamento:** Solicita uma entrada (`msg`) repetidamente até que um `float` válido seja fornecido. Utiliza um bloco `try-except` para capturar `ValueError` ou `TypeError` caso a entrada não possa ser convertida para um número. Em caso de erro, exibe uma mensagem em vermelho.
 
-5 - Definir Permissões de Acesso Para garantir que apenas o proprietário do arquivo tenha permissão de escrita e outros usuários tenham apenas permissão de leitura, use:
+* **`verif_op(msg)` função:**
+    * **Propósito:** Valida o operador matemático inserido pelo usuário.
+    * **Funcionamento:** Apresenta um menu de opções de operadores (`+`, `-`, `*`, `/`) e solicita a escolha. Repete a solicitação até que um operador válido seja digitado. Em caso de entrada inválida, exibe uma mensagem de erro em vermelho.
 
-```bash
-chmod 744 calculadora.sh
-```
+* **`operacao(operador, x, y)` função:**
+    * **Propósito:** Realiza a operação matemática selecionada e formata o resultado.
+    * **Funcionamento:** Recebe o `operador` e os dois números (`x` e `y`). Compara o `operador` e executa a operação correspondente.
+    * **Tratamento de Erro:** Inclui uma verificação para **divisão por zero**, exibindo uma mensagem de erro em vermelho se `y` for `0` na operação de divisão.
+    * **Saída:** Retorna uma string formatada com o cálculo e o resultado em amarelo.
 
-6 - Agora, você pode rodar o script para executar a calculadora Python com o seguinte comando:
+* **Fluxo Principal do Programa:**
+    * O programa executa em um loop `while` que continua enquanto o usuário não digitar 'N' (ou 'n') para sair.
+    * Dentro do loop, ele primeiro solicita ao usuário para escolher uma operação usando `verif_op`.
+    * Em seguida, pede os dois números (`x` e `y`) para a operação, utilizando `isFloat` para validar as entradas.
+    * Chama a função `operacao` para calcular e exibir o resultado.
+    * Após cada cálculo, pergunta ao usuário se deseja continuar (`S/N`).
+    * Ao sair do loop, exibe uma mensagem de despedida.
 
-```bash
-./calculadora.sh
-```
-
->> Requisitos Python 3.10 ou superior
-Terminal (Linux/Mac) ou Git Bash (sem Windows)
+### Melhorias Implementadas:
+* Passagem de `x` e `y` como argumentos para a função `operacao` para melhor encapsulamento.
+* Tratamento de `ZeroDivisionError` dentro da função `operacao`.
+* Correção do símbolo da multiplicação no menu de opções.
+* Normalização da entrada `finalizar` para maiúscula.
+* Remoção do espaço extra no final dos prompts de `isFloat`.
+* Remoção do operador '0' de `verif_op` por não ter função definida.
 
 
 
