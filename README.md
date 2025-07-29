@@ -1,8 +1,8 @@
-# **Calculadora**
+# *Calculadora*
 Este repositório apresenta uma calculadora Python simples que executa operações básicas (adição, subtração, multiplicação e divisão), acompanhada de um shell script (calculadora.sh) para facilitar sua execução.
 ---
 
-## Como Executar o Script
+Como Executar o Script
 
 Para executar esta calculadora, você precisará ter o **Python 3** instalado em seu sistema.
 
